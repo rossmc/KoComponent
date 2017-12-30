@@ -1,0 +1,55 @@
+<div class="component-wrapper">
+    <form class="form">
+        <fieldset class="fieldset" data-hasrequired="* Required Fields">
+            <legend class="legend"><span>Goal Tracker</span></legend><br>
+
+            <div class="field name required">
+                <div class="control">
+                    <label for="name" class="label"><span>Goal Name</span></label>
+                    <input type="text" id="name" placeholder="Enter Name" data-bind="value: inputName, valueUpdate: 'keyup'">
+                </div>
+            </div>
+
+            <div class="field type">
+                <label for="priority" class="label"><span>Type</span></label>
+                <div class="control">
+                    <select name="priority" id="priority" data-bind="value: inputPriority, options: priorityOptions">
+                    </select>
+                </div>
+            </div>
+
+            <div class="field deadline">
+                <div class="control">
+                    <label for="deadline" class="label"><span>Deadline</span></label>
+                    <input type="date" id="deadline" data-bind="value: inputDate">
+                </div>
+            </div>
+
+            <div class="actions-toolbar">
+                <button class="action primary" data-bind="click: addGoal, enable: inputName"><span>Add Goal</span></button>
+                <button class="action" data-bind="enable: canEdit, click: deleteSelected"><span>Delete</span></button>
+            </div>
+
+        </fieldset>
+    </form>
+    <div class="table-wrapper">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Deadline</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: goals">
+                <tr>
+                    <td><input type="checkbox" data-bind="value: $data, checked: $parent.selectedGoals"/></td>
+                    <td data-bind="text: name">Name</td>
+                    <td data-bind="text: priority">Type</td>
+                    <td data-bind="text: date">Deadline</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
